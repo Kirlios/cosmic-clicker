@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="stars"></div>
+    <div class="app-shell">
+      <header class="glass topbar">
+        <div class="brand">
+          <div class="brand-mark">✦</div>
+          <div>
+            <div class="eyebrow">ORBITAL ENGINE</div>
+            <h1>Nova Forge</h1>
+          </div>
+        </div>
+
+        <div class="topbar-stats">
+          <div class="stat-pill">
+            <span>Plasma</span>
+            <strong id="plasmaDisplay">0</strong>
+          </div>
+          <div class="stat-pill">
+            <span>Nova</span>
+            <strong id="novaDisplay">0</strong>
+          </div>
+          <div class="stat-pill">
+            <span>Skill points</span>
+            <strong id="skillPointsDisplay">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="game-grid">
+        <section class="glass panel left-panel">
+          <div class="panel-header">
+            <span>Forge Core</span>
+            <button id="prestigeButton" class="panel-button">Collapse</button>
+          </div>
+
+          <button id="clickButton" class="core-button" aria-label="Harvest plasma">
+            <div class="core-orb">
+              <div class="orbital-system" aria-hidden="true">
+                <div class="orbit orbit-1">
+                  <span class="orbiter orbiter-1"></span>
+                </div>
+                <div class="orbit orbit-2">
+                  <span class="orbiter orbiter-2"></span>
+                </div>
+                <div class="orbit orbit-3">
+                  <span class="orbiter orbiter-3"></span>
+                </div>
+              </div>
+              <div class="core-ring"></div>
+              <div class="core-core">
+                <span class="core-glyph">✦</span>
+              </div>
+            </div>
+          </button>
+
+          <div class="click-summary">
+            <div class="summary-box">
+              <span>Tap power</span>
+              <strong id="clickPowerDisplay">1</strong>
+            </div>
+            <div class="summary-box">
+              <span>Crit</span>
+              <strong id="critChanceDisplay">12%</strong>
+            </div>
+            <div class="summary-box">
+              <span>Per sec</span>
+              <strong id="productionDisplay">0</strong>
+            </div>
+          </div>
+
+          <div class="resource-strip">
+            <div class="resource-card">
+              <div class="resource-icon accent">◈</div>
+              <div>
+                <label>Plasma</label>
+                <strong id="plasmaCard">0</strong>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="resource-icon violet">⬢</div>
+              <div>
+                <label>Stellar</label>
+                <strong id="stellarDisplay">0</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="glass panel center-panel">
+          <div class="panel-header">
+            <span>Machine Array</span>
+          </div>
+
+          <div id="generatorsList" class="stack-list"></div>
+
+          <div class="panel-header extra-top">
+            <span>Upgrades</span>
+          </div>
+
+          <div id="upgradesList" class="stack-list compact"></div>
+        </section>
+
+        <aside class="glass panel right-panel">
+          <div class="panel-header">
+            <span>Skill Lattice</span>
+          </div>
+
+          <div class="skill-tree-wrap">
+            <svg id="skillLines" class="skill-lines" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+            <div id="skillTree" class="skill-tree"></div>
+          </div>
+
+          <div class="panel-header extra-top">
+            <span>Mission Log</span>
+          </div>
+
+          <div id="achievementList" class="achievement-list"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
