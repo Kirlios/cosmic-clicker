@@ -153,7 +153,8 @@ function buyGenerator(generatorId) {
   state.plasma -= cost;
   generator.owned += 1;
   saveState();
-  render();
+  renderGenerators();
+  updateStats();
 }
 
 function buyUpgrade(upgradeId) {
@@ -176,7 +177,8 @@ function buyUpgrade(upgradeId) {
   }
 
   saveState();
-  render();
+  renderUpgrades();
+  updateStats();
 }
 
 function unlockSkill(skillId) {
@@ -197,7 +199,8 @@ function unlockSkill(skillId) {
   if (skill.id === "novaVessel") state.productionMultiplier *= 1.3;
 
   saveState();
-  render();
+  renderSkills();
+  updateStats();
 }
 
 function handleClick() {
@@ -212,7 +215,8 @@ function handleClick() {
   grantSkillPointsForProgress();
   checkAchievements();
   saveState();
-  render();
+  updateStats();
+  renderAchievements();
 }
 
 function prestige() {
@@ -237,7 +241,7 @@ function prestige() {
   state.achievements = achievementCatalog.map((a) => ({ ...a, unlocked: false }));
 
   saveState();
-  render();
+  fullRender();
 }
 
 function getGeneratorCost(generator) {
@@ -377,7 +381,7 @@ function renderAchievements() {
     .join("");
 }
 
-function renderStats() {
+function updateStats() {
   document.getElementById("plasmaDisplay").textContent = formatNumber(state.plasma);
   document.getElementById("novaDisplay").textContent = formatNumber(state.nova);
   document.getElementById("skillPointsDisplay").textContent = formatNumber(state.skillPoints);
@@ -394,9 +398,9 @@ function renderStats() {
   prestigeButton.textContent = prestigeGain > 0 ? `Collapse (+${prestigeGain})` : "Collapse";
 }
 
-function render() {
+function fullRender() {
   checkAchievements();
-  renderStats();
+  updateStats();
   renderGenerators();
   renderUpgrades();
   renderSkills();
@@ -444,11 +448,11 @@ function gameLoop() {
   grantSkillPointsForProgress();
   checkAchievements();
 
-  render();
+  updateStats();
   saveState();
 }
 
 setInterval(gameLoop, 100);
 
-render();
+fullRender();
 saveState();
